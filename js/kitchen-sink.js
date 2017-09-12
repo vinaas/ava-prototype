@@ -476,9 +476,13 @@ myApp.onPageInit('login-screen-embedded', function (page) {
     $$(page.container).find('.list-button').on('click', function () {
         var username = $$(page.container).find('input[name="username"]').val();
         var password = $$(page.container).find('input[name="password"]').val();
-        myApp.alert('Username: ' + username + ', password: ' + password, function () {
+        // myApp.alert('Username: ' + username + ', password: ' + password, function () {
+        //     mainView.router.back();
+        // });
+        if (username !== 'bao')
+        {
             mainView.router.back();
-        });
+        }
     });
 });
 $$('.login-screen').find('.list-button').on('click', function () {
