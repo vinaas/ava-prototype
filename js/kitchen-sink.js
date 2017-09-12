@@ -117,7 +117,68 @@ myApp.onPageInit('swipe-delete media-lists', function (page) {
     });
 });
 
+/* ===== Swipe to delete events callback demo ===== */
+myApp.onPageInit('tabs-animated', function (page) {
+    $$('.demo-remove-callback').on('deleted', function () {
+        myApp.alert('Thanks, item removed!');
+    });
+});
+myApp.onPageInit('tabs-animated', function (page) {
+    $$('.demo-reply').on('click', function () {
+        myApp.alert('Reply');
+    });
+    $$('.demo-mark').on('click', function () {
+        myApp.alert('Mark');
+    });
+    $$('.demo-forward').on('click', function () {
+        myApp.alert('Forward');
+    });
+});
 
+
+/* ===== Action sheet, we use it on few pages ===== */
+myApp.onPageInit('swipe-delete modals media-lists', function (page) {
+    var actionSheetButtons = [
+        // First buttons group
+        [
+            // Group Label
+            {
+                text: 'Here comes some optional description or warning for actions below',
+                label: true
+            },
+            // First button
+            {
+                text: 'Alert',
+                onClick: function () {
+                    myApp.alert('He Hoou!');
+                }
+            },
+            // Another red button
+            {
+                text: 'Nice Red Button ',
+                color: 'red',
+                onClick: function () {
+                    myApp.alert('You have clicked red button!');
+                }
+            },
+        ],
+        // Second group
+        [
+            {
+                text: 'Cancel',
+                bold: true
+            }
+        ]
+    ];
+    $$('.demo-actions').on('click', function (e) {
+        myApp.actions(actionSheetButtons);
+    });
+    $$('.demo-actions-popover').on('click', function (e) {
+        // We need to pass additional target parameter (this) for popover
+        myApp.actions(this, actionSheetButtons);
+    });
+
+});
 /* ===== Action sheet, we use it on few pages ===== */
 myApp.onPageInit('swipe-delete modals media-lists', function (page) {
     var actionSheetButtons = [
@@ -553,6 +614,40 @@ myApp.onPageInit('calendar', function (page) {
         onMonthYearChangeStart: function (p) {
             $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] +', ' + p.currentYear);
         }
+    });
+});
+
+/* ===== tabs-animated ===== */
+myApp.onPageInit('tabs-animated', function (page) {
+    var today = new Date();
+
+    // iOS Device picker
+    var pickerDevice = myApp.picker({
+        input: '#ks-picker-device',
+        cols: [
+            {
+                textAlign: 'center',
+                values: ['Draft', 'Approve', 'Recommend', 'Rejected']
+            }
+        ]
+    });
+    var pickerDevice1 = myApp.picker({
+        input: '#ks-picker-device-1',
+        cols: [
+            {
+                textAlign: 'center',
+                values: ['Draft', 'Approve', 'Recommend', 'Rejected']
+            }
+        ]
+    });
+    var pickerDevice2 = myApp.picker({
+        input: '#ks-picker-device-2',
+        cols: [
+            {
+                textAlign: 'center',
+                values: ['Draft', 'Approve', 'Recommend', 'Rejected']
+            }
+        ]
     });
 });
 
