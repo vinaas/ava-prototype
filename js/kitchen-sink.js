@@ -479,7 +479,7 @@ myApp.onPageInit('login-screen-embedded', function (page) {
         // myApp.alert('Username: ' + username + ', password: ' + password, function () {
         //     mainView.router.back();
         // });
-        if (username !== 'bao')
+        if (username === 'bao')
         {
             mainView.router.back();
         }
