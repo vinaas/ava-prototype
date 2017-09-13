@@ -653,6 +653,15 @@ myApp.onPageInit('tabs-animated', function (page) {
             }
         ]
     });
+    var pickerDevice3 = myApp.picker({
+        input: '#ks-picker-device-3',
+        cols: [
+            {
+                textAlign: 'center',
+                values: ['Draft', 'Approve', 'Recommend', 'Rejected']
+            }
+        ]
+    });
 });
 
 /* ===== Pickers ===== */
